@@ -15,16 +15,38 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IIx-ey-f0E">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="3Dn-10-odA"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Tbj-fA-W8R"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IIx-ey-f0E" secondAttribute="trailing" id="J9z-DV-b2u"/>
+                            <constraint firstItem="IIx-ey-f0E" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="JuS-ee-h9d"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="IIx-ey-f0E" secondAttribute="bottom" constant="-34" id="j0s-Jg-wLc"/>
+                            <constraint firstItem="IIx-ey-f0E" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="sZf-Nf-cGy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="table" destination="IIx-ey-f0E" id="EhP-ll-NR2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="4"/>
+            <point key="canvasLocation" x="140" y="3.5545023696682461"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
