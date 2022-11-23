@@ -20,6 +20,8 @@
 		006DC0D3292D0B2400B3AA20 /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 006DC0D2292D0B2400B3AA20 /* FeedViewController.storyboard */; };
 		006DC0D8292D20C200B3AA20 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006DC0D7292D20C200B3AA20 /* NetworkService.swift */; };
 		006DC0DA292D21C300B3AA20 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006DC0D9292D21C300B3AA20 /* API.swift */; };
+		006DC0E3292D67FF00B3AA20 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006DC0E2292D67FF00B3AA20 /* FeedResponse.swift */; };
+		006DC0E5292E496500B3AA20 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006DC0E4292E496500B3AA20 /* NetworkDataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		006DC0D2292D0B2400B3AA20 /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
 		006DC0D7292D20C200B3AA20 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		006DC0D9292D21C300B3AA20 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		006DC0E2292D67FF00B3AA20 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		006DC0E4292E496500B3AA20 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		B103EAE2FACC6970B3F1A607 /* Pods-VkNewsFeedCleanSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkNewsFeedCleanSwift.release.xcconfig"; path = "Target Support Files/Pods-VkNewsFeedCleanSwift/Pods-VkNewsFeedCleanSwift.release.xcconfig"; sourceTree = "<group>"; };
 		D343DE99C921144AF35F84E8 /* Pods_VkNewsFeedCleanSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkNewsFeedCleanSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF9C220BAA9B584820E9FE9 /* Pods-VkNewsFeedCleanSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkNewsFeedCleanSwift.debug.xcconfig"; path = "Target Support Files/Pods-VkNewsFeedCleanSwift/Pods-VkNewsFeedCleanSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,8 +75,10 @@
 		0008CD80292C03FF00713391 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				006DC0E1292D62D900B3AA20 /* Models */,
 				0008CD7E292C03F900713391 /* AuthService.swift */,
 				006DC0D7292D20C200B3AA20 /* NetworkService.swift */,
+				006DC0E4292E496500B3AA20 /* NetworkDataFetcher.swift */,
 				006DC0D9292D21C300B3AA20 /* API.swift */,
 			);
 			path = Services;
@@ -152,6 +158,14 @@
 				004E8199292BE2B20030DBDD /* Assets.xcassets */,
 			);
 			path = Resurces;
+			sourceTree = "<group>";
+		};
+		006DC0E1292D62D900B3AA20 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				006DC0E2292D67FF00B3AA20 /* FeedResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		37542B69E3AB48D3829FD5C3 /* Pods */ = {
@@ -280,11 +294,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				006DC0E3292D67FF00B3AA20 /* FeedResponse.swift in Sources */,
 				004E8195292BE2B10030DBDD /* AuthViewController.swift in Sources */,
 				004E8191292BE2B10030DBDD /* AppDelegate.swift in Sources */,
 				0008CD84292D0A9300713391 /* FeedViewController.swift in Sources */,
 				004E8193292BE2B10030DBDD /* SceneDelegate.swift in Sources */,
 				006DC0D8292D20C200B3AA20 /* NetworkService.swift in Sources */,
+				006DC0E5292E496500B3AA20 /* NetworkDataFetcher.swift in Sources */,
 				0008CD7F292C03F900713391 /* AuthService.swift in Sources */,
 				006DC0DA292D21C300B3AA20 /* API.swift in Sources */,
 			);
