@@ -49,6 +49,11 @@ static let reuseId = "NewsfeedCell"
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var bottomVIew: UIView!
 
+    override func prepareForReuse() {
+        iconImageView.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
