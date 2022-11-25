@@ -15,6 +15,7 @@ protocol NewsFeedPresentationLogic {
 class NewsFeedPresenter: NewsFeedPresentationLogic {
 
     weak var viewController: NewsFeedDisplayLogic?
+    var cellLaoutCalculator: FeedCellLayoutCalculatorProtocol = FeedCellLayoutCalculator()
 
     let dateFormatter: DateFormatter = {
         let dt = DateFormatter()
@@ -41,9 +42,11 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
         let profile = self.profile(for: feedItem.sourceId, profiles: profiles, groups: groups)
 
         let photoAttachment = self.photoAttachment(feedItem: feedItem)
-        let date = Date(timeIntervalSince1970: feedItem.date)
 
+        let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
+
+        let sizes = cellLaoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment)
 
       return  FeedViewModel.Cell.init(
         iconUrlString: profile.photo,
@@ -54,7 +57,8 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
             comments: String(feedItem.comments?.count ?? 0),
             shares: String(feedItem.reposts?.count ?? 0),
             views: String(feedItem.views?.count ?? 0),
-        photoAttachement: photoAttachment
+        photoAttachement: photoAttachment,
+        sizes: sizes
         )
     }
 
