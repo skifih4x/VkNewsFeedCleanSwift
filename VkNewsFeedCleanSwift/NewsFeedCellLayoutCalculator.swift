@@ -10,7 +10,7 @@ import UIKit
 struct Sizes: FeedCellSizes {
     var postLabelFrame: CGRect
     var attachmentFrame: CGRect
-    var bottomView: CGRect
+    var bottomViewFrame: CGRect
     var totalHeight: CGFloat
 }
 
@@ -72,11 +72,25 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
             attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * ratio)
         }
 
+        // MARK: - Работа с bottomViewFrame
+
+        let bottomViewTop = max(postLabelFrame.maxY, attachmentFrame.maxY)
+        let bottomViewFrame = CGRect(
+            origin: CGPoint(
+                x: 0,
+                y: bottomViewTop
+            ),
+            size: CGSize(
+                width: cardViewWidth,
+                height: Constants.bottomViewHeight
+            )
+        )
+
         
         return Sizes(
             postLabelFrame: postLabelFrame,
             attachmentFrame: attachmentFrame,
-            bottomView: CGRect.zero,
+            bottomViewFrame: bottomViewFrame,
             totalHeight: 600
         )
     }
