@@ -86,12 +86,14 @@ final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
             )
         )
 
-        
+        // MARK: - Работа с totalHeight 
+        let totalHeight = bottomViewFrame.maxY + Constants.cardInsets.bottom
+
         return Sizes(
             postLabelFrame: postLabelFrame,
             attachmentFrame: attachmentFrame,
             bottomViewFrame: bottomViewFrame,
-            totalHeight: 600
+            totalHeight: totalHeight
         )
     }
 }

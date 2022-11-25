@@ -79,7 +79,7 @@ static let reuseId = "NewsfeedCell"
 
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
-//        bottomVIew.frame = viewModel.sizes.bottomView
+        bottomVIew.frame = viewModel.sizes.bottomViewFrame
 
         if let photoAttachment = viewModel.photoAttachement {
             postImageView.set(imageURL: photoAttachment.photoUrlString)
