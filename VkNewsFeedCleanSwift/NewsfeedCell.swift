@@ -48,7 +48,7 @@ static let reuseId = "NewsfeedCell"
     @IBOutlet weak var sharesLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var bottomVIew: UIView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -74,7 +74,7 @@ static let reuseId = "NewsfeedCell"
 
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
-        bottomVIew.frame = viewModel.sizes.bottomView
+//        bottomVIew.frame = viewModel.sizes.bottomView
 
         if let photoAttachment = viewModel.photoAttachement {
             postImageView.set(imageURL: photoAttachment.photoUrlString)
