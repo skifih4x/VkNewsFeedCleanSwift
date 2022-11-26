@@ -43,6 +43,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
         super.viewDidLoad()
         setup()
         table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
+        table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
         interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsfeed)
 
         table.separatorStyle = .none
@@ -68,9 +69,11 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseId, for: indexPath) as! NewsfeedCell
-        let cellViewModel = feedViewModel.cells[indexPath.row]
-        cell.set(viewModel: cellViewModel)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseId, for: indexPath) as! NewsfeedCell
+//        let cellViewModel = feedViewModel.cells[indexPath.row]
+//        cell.set(viewModel: cellViewModel)
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCodeCell.reuseId, for: indexPath) as! NewsFeedCodeCell
+        cell.textLabel?.text = "index  \(indexPath.row)"
         return cell
     }
 
@@ -81,7 +84,8 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellViewModel = feedViewModel.cells[indexPath.row]
-        return cellViewModel.sizes.totalHeight
+//        return cellViewModel.sizes.totalHeight
+        return 212
     }
 
 }

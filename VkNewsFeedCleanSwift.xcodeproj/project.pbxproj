@@ -13,6 +13,8 @@
 		0008CD82292C060800713391 /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0008CD81292C060800713391 /* AuthViewController.storyboard */; };
 		000EF00629314551006F9147 /* NewsFeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000EF00529314551006F9147 /* NewsFeedCellLayoutCalculator.swift */; };
 		000EF00829315283006F9147 /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000EF00729315283006F9147 /* String + Height.swift */; };
+		003924B32932324A003513FF /* NewsFeedCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003924B22932324A003513FF /* NewsFeedCodeCell.swift */; };
+		003B70562932374A003C5815 /* Constrains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B70552932374A003C5815 /* Constrains.swift */; };
 		004E8191292BE2B10030DBDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8190292BE2B10030DBDD /* AppDelegate.swift */; };
 		004E8193292BE2B10030DBDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8192292BE2B10030DBDD /* SceneDelegate.swift */; };
 		004E8195292BE2B10030DBDD /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8194292BE2B10030DBDD /* AuthViewController.swift */; };
@@ -53,6 +55,8 @@
 		0008CD81292C060800713391 /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
 		000EF00529314551006F9147 /* NewsFeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
 		000EF00729315283006F9147 /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
+		003924B22932324A003513FF /* NewsFeedCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCodeCell.swift; sourceTree = "<group>"; };
+		003B70552932374A003C5815 /* Constrains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constrains.swift; sourceTree = "<group>"; };
 		004E818D292BE2B10030DBDD /* VkNewsFeedCleanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkNewsFeedCleanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		004E8190292BE2B10030DBDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		004E8192292BE2B10030DBDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,10 +104,18 @@
 				006DC0D7292D20C200B3AA20 /* NetworkService.swift */,
 				006DC0E4292E496500B3AA20 /* NetworkDataFetcher.swift */,
 				006DC0D9292D21C300B3AA20 /* API.swift */,
-				00A24E1C292FC6F700E7CD6B /* WebImageView.swift */,
-				000EF00729315283006F9147 /* String + Height.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		003B705729323A21003C5815 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				00A24E1C292FC6F700E7CD6B /* WebImageView.swift */,
+				000EF00729315283006F9147 /* String + Height.swift */,
+				003B70552932374A003C5815 /* Constrains.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		004E8184292BE2B10030DBDD = {
@@ -132,6 +144,7 @@
 				005BFC79292E6277005A9364 /* NewsFeed */,
 				006DC0D4292D0B3700B3AA20 /* AuthViewController */,
 				006DC0D5292D0B4800B3AA20 /* App */,
+				003B705729323A21003C5815 /* Helpers */,
 				006DC0D6292D0B5200B3AA20 /* Resurces */,
 			);
 			path = VkNewsFeedCleanSwift;
@@ -167,6 +180,7 @@
 				005BFC8B292E9E91005A9364 /* NewsfeedCell.swift */,
 				005BFC8D292E9ED6005A9364 /* NewsfeedCell.xib */,
 				000EF00529314551006F9147 /* NewsFeedCellLayoutCalculator.swift */,
+				003924B22932324A003513FF /* NewsFeedCodeCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -335,6 +349,8 @@
 			files = (
 				006DC0E3292D67FF00B3AA20 /* FeedResponse.swift in Sources */,
 				000EF00829315283006F9147 /* String + Height.swift in Sources */,
+				003924B32932324A003513FF /* NewsFeedCodeCell.swift in Sources */,
+				003B70562932374A003C5815 /* Constrains.swift in Sources */,
 				005BFC81292E62A4005A9364 /* NewsFeedPresenter.swift in Sources */,
 				004E8195292BE2B10030DBDD /* AuthViewController.swift in Sources */,
 				004E8191292BE2B10030DBDD /* AppDelegate.swift in Sources */,
