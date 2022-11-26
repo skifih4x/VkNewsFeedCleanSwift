@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol NewsFeedCOdeCellDelegate: AnyObject {
+    func revealPost(for cell: NewsFeedCodeCell)
+}
+
 class NewsFeedCodeCell: UITableViewCell {
 
     static let reuseId = "NewsFeedCodeCell"
+
+    weak var delegate: NewsFeedCOdeCellDelegate?
 
     //first layer
     let cardView: UIView = {
@@ -179,7 +185,7 @@ class NewsFeedCodeCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        contentView.isUserInteractionEnabled = true
         iconImageView.layer.cornerRadius = Constants.topViewHeight / 2
         iconImageView.clipsToBounds = true
 
@@ -189,11 +195,18 @@ class NewsFeedCodeCell: UITableViewCell {
         cardView.layer.cornerRadius = 10
         cardView.clipsToBounds = true
 
+        moreTextButton.addTarget(self, action: #selector(moreTextButtonTouch), for: .touchUpInside)
+
         overlayFirstLayer() // first layer
         overlaySecondLayer() // second layer
         overlayThirdLayerOnTopView() // three layer top view
         overlayThirdLayerOnBottomView() // three layer bottom view
         overlayFourthLayerOnBottomViewViews() //four layer bottom view
+    }
+
+  @objc func moreTextButtonTouch() {
+      print("21")
+      delegate?.revealPost(for: self)
     }
 
     func set(viewModel: FeedCellViewModel) {
