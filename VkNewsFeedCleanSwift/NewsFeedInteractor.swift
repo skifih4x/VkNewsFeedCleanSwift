@@ -17,6 +17,9 @@ class NewsFeedInteractor: NewsFeedBusinessLogic {
   var presenter: NewsFeedPresentationLogic?
   var service: NewsFeedService?
 
+    private var revealedPostIds = [Int]()
+    private var feedResponse: FeedResponse?
+
     private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
   
   func makeRequest(request: NewsFeed.Model.Request.RequestType) {
@@ -28,10 +31,19 @@ class NewsFeedInteractor: NewsFeedBusinessLogic {
       case .getNewsfeed:
           fetcher.getFeed { [weak self] feedResponse in
 
+              self?.feedResponse = feedResponse
+              self?.presentFeed()
 
-              guard let feedResponse = feedResponse else { return }
-              self?.presenter?.presentData(response: NewsFeed.Model.Response.ResponseType.presentNewsFeed(feed: feedResponse))
           }
+      case .revealPostIds(postId: let postId):
+          revealedPostIds.append(postId)
+
+          presentFeed()
       }
   }
+
+    private func presentFeed() {
+        guard let feedResponse = feedResponse else { return }
+        presenter?.presentData(response: NewsFeed.Model.Response.ResponseType.presentNewsFeed(feed: feedResponse, revealdedPostIds: revealedPostIds))
+    }
 }

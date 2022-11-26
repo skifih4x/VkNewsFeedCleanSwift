@@ -26,10 +26,11 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
 
     func presentData(response: NewsFeed.Model.Response.ResponseType) {
         switch response {
-        case .presentNewsFeed(feed: let feed):
+        case .presentNewsFeed(feed: let feed, let revealdedPostIds):
 
+            print(revealdedPostIds)
             let cells = feed.items.map { feedItem in
-                cellViewModel(from: feedItem, profiles: feed.profiles, groups: feed.groups)
+                cellViewModel(from: feedItem, profiles: feed.profiles, groups: feed.groups, revealdedPostIds: revealdedPostIds)
             }
 
             let feedViewModel = FeedViewModel.init(cells: cells)
@@ -37,7 +38,7 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
 
         }
     }
-    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group]) -> FeedViewModel.Cell {
+    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group], revealdedPostIds: [Int]) -> FeedViewModel.Cell {
 
         let profile = self.profile(for: feedItem.sourceId, profiles: profiles, groups: groups)
 
@@ -46,10 +47,15 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
 
-        let sizes = cellLaoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment)
+        let isFullSize = revealdedPostIds.contains { postId in
+            postId == feedItem.postId
+        }
 
-      return  FeedViewModel.Cell.init(
-        iconUrlString: profile.photo,
+        let sizes = cellLaoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment, isFullSizePost: isFullSize)
+
+        return  FeedViewModel.Cell.init(
+            postId: feedItem.postId,
+            iconUrlString: profile.photo,
             name: profile.name,
             date: dateTitle,
             text: feedItem.text,
@@ -57,8 +63,8 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
             comments: String(feedItem.comments?.count ?? 0),
             shares: String(feedItem.reposts?.count ?? 0),
             views: String(feedItem.views?.count ?? 0),
-        photoAttachement: photoAttachment,
-        sizes: sizes
+            photoAttachement: photoAttachment,
+            sizes: sizes
         )
     }
 
