@@ -50,6 +50,8 @@ class NewsFeedCodeCell: UITableViewCell {
         button.setTitle("Показать полность...", for: .normal)
         return button
     }()
+    
+    let galleyCollectionView = GalleryCollectionView()
 
     let postImageView: WebImageView = {
         let imageView = WebImageView()
@@ -145,7 +147,7 @@ class NewsFeedCodeCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "457K"
-//        label.textColor = #colorLiteral(red: 0.5768454671, green: 0.6187268496, blue: 0.6644299626, alpha: 1)
+        //        label.textColor = #colorLiteral(red: 0.5768454671, green: 0.6187268496, blue: 0.6644299626, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         return label
@@ -154,7 +156,7 @@ class NewsFeedCodeCell: UITableViewCell {
     let commentsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.textColor = #colorLiteral(red: 0.5768454671, green: 0.6187268496, blue: 0.6644299626, alpha: 1)
+        //        label.textColor = #colorLiteral(red: 0.5768454671, green: 0.6187268496, blue: 0.6644299626, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         return label
@@ -172,7 +174,7 @@ class NewsFeedCodeCell: UITableViewCell {
     let viewsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.textColor = #colorLiteral(red: 0.5768454671, green: 0.6187268496, blue: 0.6644299626, alpha: 1)
+        //        label.textColor = #colorLiteral(red: 0.5768454671, green: 0.6187268496, blue: 0.6644299626, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         return label
@@ -204,9 +206,9 @@ class NewsFeedCodeCell: UITableViewCell {
         overlayFourthLayerOnBottomViewViews() //four layer bottom view
     }
 
-  @objc func moreTextButtonTouch() {
-      print("21")
-      delegate?.revealPost(for: self)
+    @objc func moreTextButtonTouch() {
+        print("21")
+        delegate?.revealPost(for: self)
     }
 
     func set(viewModel: FeedCellViewModel) {
@@ -220,15 +222,23 @@ class NewsFeedCodeCell: UITableViewCell {
         viewsLabel.text = viewModel.views
 
         postLabel.frame = viewModel.sizes.postLabelFrame
-        postImageView.frame = viewModel.sizes.attachmentFrame
+
         bottomView.frame = viewModel.sizes.bottomViewFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
 
-        if let photoAttachment = viewModel.photoAttachement {
+        if let photoAttachment = viewModel.photoAttachements.first, viewModel.photoAttachements.count == 1 {
             postImageView.set(imageURL: photoAttachment.photoUrlString)
             postImageView.isHidden = false
+            galleyCollectionView.isHidden = true
+            postImageView.frame = viewModel.sizes.attachmentFrame
+        } else if viewModel.photoAttachements.count > 1 {
+            galleyCollectionView.frame = viewModel.sizes.attachmentFrame
+            postImageView.isHidden = true
+            galleyCollectionView.isHidden = false
+            galleyCollectionView.set(photos: viewModel.photoAttachements)
         } else {
             postImageView.isHidden = true
+            galleyCollectionView.isHidden = true
         }
     }
 
@@ -345,6 +355,7 @@ class NewsFeedCodeCell: UITableViewCell {
         cardView.addSubview(postLabel)
         cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
+        cardView.addSubview(galleyCollectionView)
         cardView.addSubview(bottomView)
 
         // topView constraints

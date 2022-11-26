@@ -16,7 +16,7 @@ protocol FeedCellViewModel {
     var comments: String? { get }
     var shares: String? { get }
     var views: String? { get }
-    var photoAttachement: FeedCellPhotoAttachementViewModel? { get }
+    var photoAttachements: [FeedCellPhotoAttachementViewModel] { get }
     var sizes: FeedCellSizes { get }
 }
 
@@ -82,11 +82,11 @@ static let reuseId = "NewsfeedCell"
         postImageView.frame = viewModel.sizes.attachmentFrame
         bottomVIew.frame = viewModel.sizes.bottomViewFrame
 
-        if let photoAttachment = viewModel.photoAttachement {
-            postImageView.set(imageURL: photoAttachment.photoUrlString)
-            postImageView.isHidden = false
-        } else {
-            postImageView.isHidden = true
-        }
+//        if let photoAttachment = viewModel.photoAttachement {
+//            postImageView.set(imageURL: photoAttachment.photoUrlString)
+//            postImageView.isHidden = false
+//        } else {
+//            postImageView.isHidden = true
+//        }
     }
 }
